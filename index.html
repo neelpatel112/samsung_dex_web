@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsung DeX Web Simulator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Boot Screen -->
+    <div id="boot-screen">
+        <div class="boot-logo">
+            <div class="dex-circle">
+                <span class="dex-text">D</span>
+                <span class="dex-text">e</span>
+                <span class="dex-text">X</span>
+            </div>
+            <p class="boot-subtitle">Web Simulator</p>
+            <div class="boot-progress">
+                <div class="boot-progress-bar"></div>
+            </div>
+            <p class="boot-hint">Powered by Samsung-inspired technology</p>
+        </div>
+    </div>
+
+    <!-- Desktop Container -->
+    <div id="desktop" class="hidden">
+        <!-- Wallpaper Background -->
+        <div class="wallpaper"></div>
+        
+        <!-- Taskbar -->
+        <div id="taskbar">
+            <div class="taskbar-left">
+                <button id="app-drawer-btn" class="taskbar-btn" title="App Drawer">
+                    <i class="fas fa-th"></i>
+                </button>
+                <button id="home-btn" class="taskbar-btn active" title="Home">
+                    <i class="fas fa-home"></i>
+                </button>
+            </div>
+            
+            <div class="taskbar-center" id="taskbar-center">
+                <!-- Running apps will appear here -->
+            </div>
+            
+            <div class="taskbar-right">
+                <div class="system-tray">
+                    <span class="tray-icon"><i class="fas fa-wifi"></i></span>
+                    <span class="tray-icon"><i class="fas fa-volume-up"></i></span>
+                    <span class="tray-icon"><i class="fas fa-battery-three-quarters"></i></span>
+                    <span id="clock" class="clock">00:00</span>
+                    <span class="date">Fri, Feb 1</span>
+                    <button id="quick-settings-btn" class="tray-btn">
+                        <i class="fas fa-chevron-up"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- App Drawer -->
+        <div id="app-drawer" class="hidden">
+            <div class="drawer-header">
+                <h3>Applications</h3>
+                <button id="close-drawer-btn" class="drawer-close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="app-grid">
+                <div class="app-icon" data-app="files">
+                    <div class="app-icon-circle">
+                        <i class="fas fa-folder"></i>
+                    </div>
+                    <span class="app-name">My Files</span>
+                </div>
+                <div class="app-icon" data-app="browser">
+                    <div class="app-icon-circle">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <span class="app-name">Internet</span>
+                </div>
+                <div class="app-icon" data-app="settings">
+                    <div class="app-icon-circle">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <span class="app-name">Settings</span>
+                </div>
+                <div class="app-icon" data-app="terminal">
+                    <div class="app-icon-circle">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <span class="app-name">Terminal</span>
+                </div>
+                <div class="app-icon" data-app="calculator">
+                    <div class="app-icon-circle">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <span class="app-name">Calculator</span>
+                </div>
+                <div class="app-icon" data-app="notes">
+                    <div class="app-icon-circle">
+                        <i class="fas fa-sticky-note"></i>
+                    </div>
+                    <span class="app-name">Notes</span>
+                </div>
+                <div class="app-icon" data-app="gallery">
+                    <div class="app-icon-circle">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <span class="app-name">Gallery</span>
+                </div>
+                <div class="app-icon" data-app="music">
+                    <div class="app-icon-circle">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <span class="app-name">Music</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Settings Panel -->
+        <div id="quick-settings" class="hidden">
+            <div class="settings-header">
+                <h3>Quick Settings</h3>
+                <button id="close-settings-btn" class="settings-close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="settings-grid">
+                <div class="setting-item">
+                    <div class="setting-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <span class="setting-label">Wi-Fi</span>
+                    <label class="switch">
+                        <input type="checkbox" id="wifi-toggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-icon">
+                        <i class="fas fa-bluetooth"></i>
+                    </div>
+                    <span class="setting-label">Bluetooth</span>
+                    <label class="switch">
+                        <input type="checkbox" id="bluetooth-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <span class="setting-label">Dark Mode</span>
+                    <label class="switch">
+                        <input type="checkbox" id="darkmode-toggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-icon">
+                        <i class="fas fa-volume-up"></i>
+                    </div>
+                    <span class="setting-label">Volume</span>
+                    <div class="volume-slider-container">
+                        <input type="range" id="volume-slider" min="0" max="100" value="75">
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <span class="setting-label">Brightness</span>
+                    <div class="brightness-slider-container">
+                        <input type="range" id="brightness-slider" min="20" max="100" value="80">
+                    </div>
+                </div>
+                <div class="setting-item full-width">
+                    <div class="setting-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <span class="setting-label">Wallpaper</span>
+                    <div class="wallpaper-options">
+                        <button class="wallpaper-option" data-wallpaper="1" style="background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);"></button>
+                        <button class="wallpaper-option" data-wallpaper="2" style="background: linear-gradient(135deg, #1e3c72, #2a5298);"></button>
+                        <button class="wallpaper-option" data-wallpaper="3" style="background: linear-gradient(135deg, #42275a, #734b6d);"></button>
+                        <button class="wallpaper-option" data-wallpaper="4" style="background: linear-gradient(135deg, #141e30, #243b55);"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Window Area -->
+        <div id="window-area">
+            <!-- Windows will be dynamically created here -->
+        </div>
+
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <div class="desktop-icon" data-app="files">
+                <i class="fas fa-folder"></i>
+                <span>My Files</span>
+            </div>
+            <div class="desktop-icon" data-app="browser">
+                <i class="fas fa-globe"></i>
+                <span>Internet</span>
+            </div>
+            <div class="desktop-icon" data-app="terminal">
+                <i class="fas fa-terminal"></i>
+                <span>Terminal</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
